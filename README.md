@@ -1,2 +1,2 @@
 # ruby-dsa
-A test suite to practice implementations of core algorithms.
+A test suite to practice implementations of core algorithms in ruby.
