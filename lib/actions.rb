@@ -10,11 +10,13 @@ module Actions
   end
 
   def self.init
-    puts 'init'
+    safe_create_imp_files
   end
 
   def self.reset
-    puts 'reset'
+    clear_imp_files
+    # TODO: Archive
+    safe_create_imp_files
   end
 
   def self.restore
@@ -33,9 +35,20 @@ module Actions
     list_test_files.each { require _1 }
   end
 
-  private_class_method def self.load_and_gather
+  # TODO: the two methods below duplicate code
+
+  # Creates imp files if they don't already exist
+  private_class_method def self.safe_create_imp_files
+    list_tests.map { _1.split('test_')[1] }.each do |file|
+      filename = "imps/#{file}.rb"
+      File.open(filename, 'w') {} unless File.exist? filename
+    end
   end
 
-  private_class_method def self.create_imp_files
+  private_class_method def self.clear_imp_files
+    list_tests.map { _1.split('test_')[1] }.each do |file|
+      filename = "imps/#{file}.rb"
+      File.delete(filename) if File.exist? filename
+    end
   end
 end
