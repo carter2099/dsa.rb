@@ -1,13 +1,14 @@
 module Actions
   def self.run_tests
     puts "\n"
-    gather_tests.each do
+    load_and_gather.each do
+      # load_and_gather requires the files making the test methods callable locally
       send _1
       puts "\n"
     end
   end
 
-  private_class_method def self.gather_tests
+  private_class_method def self.load_and_gather
     tests = []
     Dir['./lib/tests/*.rb'].each do |file|
       require file
