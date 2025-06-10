@@ -22,7 +22,7 @@ module Actions
 
   def self.restore
     print 'This will clear the imps/ directory, are you sure? (y/n): '
-    until %w[y n].include?(input = $stdin.gets.strip)
+    until %w[y n].include?(input = $stdin.gets.chomp)
       print 'Please enter y or n: '
     end
     exit(0) if input == 'n'
