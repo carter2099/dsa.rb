@@ -1,6 +1,7 @@
 require_relative('lib/actions')
 
-if ARGV.size > 1 || (ARGV.size == 1 && !%w[init reset restore].include?(ARGV[0]))
+allowed_args = %w[init reset restore]
+if ARGV.size > 1 || (ARGV.size == 1 && !allowed_args.include?(ARGV[0]))
   puts 'Only zero or one argument of [init|reset|restore] is accepted'
   return
 end
