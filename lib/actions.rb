@@ -16,7 +16,6 @@ module Actions
 
   def self.reset
     archive
-    clear_imp_files
     safe_create_imp_files
   end
 
