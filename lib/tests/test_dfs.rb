@@ -21,6 +21,6 @@ def test_dfs
   TestHelpers.run_test { dfs(graph, 99).nil? }
 rescue LoadError
   puts 'LoadError imps/dfs.rb not found'
-rescue StandardError
-  puts 'Error'
+rescue StandardError => e
+  puts "Error: #{e}"
 end
