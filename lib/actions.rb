@@ -20,7 +20,16 @@ module Actions
   end
 
   def self.restore
-    puts 'restore'
+    print 'This will clear the imps/ directory, are you sure? (y/n): '
+    until %w[y n].include?(input = $stdin.gets.strip)
+      print 'Please enter y or n: '
+    end
+    exit(0) if input == 'n'
+    clear_imp_files
+    most_recent_dir = "archive/#{Dir.new('archive').children.sort.reverse.first}"
+    Dir.new(most_recent_dir).children.each do |file|
+      FileUtils.mv("#{most_recent_dir}/#{file}", "imps/#{file}")
+    end
   end
 
   private_class_method def self.archive
