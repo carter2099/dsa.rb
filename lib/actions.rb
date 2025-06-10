@@ -1,4 +1,5 @@
 require 'fileutils'
+
 module Actions
   def self.run_tests
     puts "\n"
