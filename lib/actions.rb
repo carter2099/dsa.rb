@@ -35,20 +35,18 @@ module Actions
     list_test_files.each { require _1 }
   end
 
-  # TODO: the two methods below duplicate code
-
-  # Creates imp files if they don't already exist
   private_class_method def self.safe_create_imp_files
-    list_tests.map { _1.split('test_')[1] }.each do |file|
-      filename = "imps/#{file}.rb"
-      File.open(filename, 'w') {} unless File.exist? filename
-    end
+    yield_base_filenames { |filename| File.open(filename, 'w') {} unless File.exist? filename }
   end
 
   private_class_method def self.clear_imp_files
+    yield_base_filenames { |filename| File.delete(filename) if File.exist? filename }
+  end
+
+  private_class_method def self.yield_base_filenames
     list_tests.map { _1.split('test_')[1] }.each do |file|
       filename = "imps/#{file}.rb"
-      File.delete(filename) if File.exist? filename
+      yield filename
     end
   end
 end
