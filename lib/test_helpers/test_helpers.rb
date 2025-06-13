@@ -4,33 +4,32 @@ module TestHelpers
     puts(yield ? '--pass' : '***FAIL***')
   end
 
-  # returns node 1 of the following graph:
+  # returns a hash modeling the following graph:
   #
-  #       5  0  12
-  #     /  \/  /
-  #    7   1--10
-  #       /\
-  #      9  2--3
+  #         5  0  12
+  #       /  \/  /
+  #   8--7   1--10    6--11
+  #         /\       /
+  #        9  2--3--4
   def self.create_graph
-    zero = Node.new(0)
-    one = Node.new(1)
-    two = Node.new(2)
-    three = Node.new(3)
-    five = Node.new(5)
-    seven = Node.new(7)
-    nine = Node.new(9)
-    ten = Node.new(10)
-    twelve = Node.new(12)
-    seven.neighbors = [five]
-    five.neighbors = [seven, one]
-    one.neighbors = [five, zero, ten, nine, two]
-    nine.neighbors = [one]
-    zero.neighbors = [one]
-    two.neighbors = [one, three]
-    ten.neighbors = [one, twelve]
-    three.neighbors = [two]
-    twelve.neighbors = [ten]
-    one
+    graph = {}
+    (0..12).each do |n|
+      graph[n] = Node.new n
+    end
+    graph[7].neighbors = [graph[5], graph[8]]
+    graph[8].neighbors = [graph[7]]
+    graph[5].neighbors = [graph[7], graph[1]]
+    graph[1].neighbors = [graph[5], graph[0], graph[10], graph[9], graph[2]]
+    graph[9].neighbors = [graph[1]]
+    graph[0].neighbors = [graph[1]]
+    graph[2].neighbors = [graph[1], graph[3]]
+    graph[10].neighbors = [graph[1], graph[12]]
+    graph[3].neighbors = [graph[2], graph[4]]
+    graph[4].neighbors = [graph[3], graph[6]]
+    graph[6].neighbors = [graph[4], graph[11]]
+    graph[11].neighbors = [graph[6]]
+    graph[12].neighbors = [graph[10]]
+    graph
   end
 
   def self.create_arr
