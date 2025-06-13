@@ -4,10 +4,6 @@ module Actions
   def self.run_tests
     puts "\n"
     list_test_files.each { require _1 }
-    list_tests.each do
-      send _1
-      puts "\n"
-    end
   end
 
   def self.init
@@ -32,7 +28,7 @@ module Actions
   end
 
   private_class_method def self.prompt_and_clear(clear_archive: false)
-    print 'This will clear the archive/ and imps/ directories, are you sure? (y/n): '
+    print "This will clear the imps/ #{clear_archive ? 'and archive/ directories' : 'directory'}, are you sure? (y/n): "
     until %w[y n].include?(input = $stdin.gets.chomp)
       print 'Please enter y or n: '
     end
@@ -48,7 +44,7 @@ module Actions
   private_class_method def self.archive
     archive_dir = "archive/#{Time.new.strftime('%Y%m%d_%H:%M')}"
     FileUtils.mkdir_p archive_dir
-    yield_base_filenames do |filename|
+    yield_imp_filenames do |filename|
       FileUtils.mv(filename, archive_dir) if File.exist?(filename)
     end
     puts "Archived imps/ to #{archive_dir}"
@@ -59,22 +55,21 @@ module Actions
   end
 
   private_class_method def self.del_imp_files
-    yield_base_filenames { |filename| File.delete(filename) if File.exist? filename }
+    yield_imp_filenames { |filename| File.delete(filename) if File.exist? filename }
   end
 
   private_class_method def self.safe_create_imp_files
-    yield_base_filenames { |filename| File.open(filename, 'w') {} unless File.exist? filename }
+    yield_imp_filenames { |filename| File.open(filename, 'w') {} unless File.exist? filename }
   end
 
-  private_class_method def self.yield_base_filenames(include_path: true)
-    list_tests.map { _1.split('test_')[1] }.each do |file|
+  # Reads the contents of the lib/tests directory and yields matching implementation
+  # filenames, optionally prepending imps/
+  private_class_method def self.yield_imp_filenames(include_path: true)
+    base_names = list_test_files.map { File.basename _1, '.rb' }
+    base_names.map { _1.split('test_')[1] }.each do |file|
       filename = include_path ? "imps/#{file}.rb" : "#{file}.rb"
       yield filename
     end
-  end
-
-  private_class_method def self.list_tests
-    list_test_files.map { File.basename _1, '.rb' }
   end
 
   private_class_method def self.list_test_files
