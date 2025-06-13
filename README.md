@@ -2,8 +2,9 @@
 A test suite to practice implementations of core algorithms in ruby.
 
 ## Usage
-- `ruby dsa.rb` runs the tests
-- `ruby dsa.rb [init|reset|restore|clean]`
+- run `chmod +x` to make dsa.rb executable
+- `dsa.rb` runs the tests
+- `dsa.rb [init|reset|restore|clean]`
     - `init` creates empty implementations in the imps/ directory
     - `reset` archives current implementations to archive/ and replaces them with empty implementations
     - `restore` restores the most recently archived implementations
