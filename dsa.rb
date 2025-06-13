@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require_relative('lib/actions')
 
 allowed_args = %w[init reset restore clean]
