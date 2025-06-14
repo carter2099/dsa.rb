@@ -1,6 +1,16 @@
 # dsa.rb
 A test suite to practice implementations of core algorithms in ruby.
 
+## Objective
+Cement ability to implement core algorithms through repetion.
+
+This test suite is not like LeetCode. In fact, it's more of a prerequsite to LeetCode.
+
+The test cases are not exhaustive in the spirit of checking for runtime performance, 
+scalability, etc. Implementations are generalized, so that through practice using this 
+tool, the user can avoid having to think about the algorithmic pattern, and focus on 
+the application to the problem at hand.
+
 ## Usage
 1. `chmod +x dsa.rb` to make dsa.rb executable
 2. `dsa.rb init` to create empty files in imps/
