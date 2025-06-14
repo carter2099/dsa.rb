@@ -35,6 +35,7 @@ module Actions
   end
 
   def self.init
+    FileUtils.mkdir('imps/')
     safe_create_imp_files
   end
 
