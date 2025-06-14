@@ -1,14 +1,11 @@
 def bfs(node, target)
-  return node if node.value == target
-
   queue = [node]
-  visited = Set.new([node])
-  while (next_node = queue.shift)
-    next_node.neighbors.filter { !visited.include? _1 }.each do |neighbor|
-      return neighbor if neighbor.value == target
+  visited = Set.new
 
-      visited << neighbor
-      queue << neighbor
-    end
+  while (current = queue.shift)
+    return current if current.value == target
+
+    current.neighbors.filter { !visited.include? _1 }.each { queue.unshift _1 }
+    visited << current
   end
 end
