@@ -16,12 +16,13 @@ a single method with the following signatures:
 - Run `dsa.rb` to test your implementations!
 
 #### Full Usage:
-- `dsa.rb [run|init|reset|restore|clean]`
+- `dsa.rb [run|init|reset|restore|clean|help]`
     - `run` or no args runs the tests
     - `init` creates empty implementations in the imps/ directory. This will not override existing files.
     - `reset` archives current implementations to archive/ and replaces them with empty implementations
     - `restore` restores the most recently archived implementations
     - `clean` deletes the contents of the imps/ and archive/ directories
+    - `help` print this message
 
 ## Extension
 Add to lib/tests using `test_template.rb` as a reference. `dsa.rb` will dynamically 
