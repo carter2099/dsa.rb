@@ -2,7 +2,7 @@
 A test suite to practice implementations of core algorithms in ruby.
 
 ## Objective
-Cement ability to implement core algorithms through repetion.
+Cement ability to implement core algorithms through repetition.
 
 This test suite is not like LeetCode. In fact, it's more of a prerequisite to LeetCode.
 
