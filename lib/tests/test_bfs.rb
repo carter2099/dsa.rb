@@ -3,10 +3,12 @@ require('minitest/autorun')
 
 class TestBfs < Minitest::Test
   def setup
-    require_relative('../../imps/bfs')
     @graph_hash = TestHelpers.create_graph
+    require_relative('../../imps/bfs')
   rescue LoadError
-    puts 'LoadError: imps/bfs.rb not found'
+    puts
+    puts '  **** Error: imps/bfs.rb not found' unless @no_file
+    @no_file = true
   end
 
   def assert_bfs_value(graph, target, expected = target)
@@ -16,7 +18,7 @@ class TestBfs < Minitest::Test
       assert_equal(bfs(graph, target)&.value, expected)
     end
   rescue NoMethodError
-    puts 'Skipping test, BFS not implemented...' unless @no_imp
+    puts '  ...Skipping test, BFS not implemented...' unless @no_imp
     @no_imp = true
   end
 

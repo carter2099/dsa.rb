@@ -3,10 +3,12 @@ require('minitest/autorun')
 
 class TestBinarySearch < Minitest::Test
   def setup
-    require_relative('../../imps/binary_search')
     @arr = TestHelpers.create_arr
+    require_relative('../../imps/binary_search')
   rescue LoadError
-    puts 'LoadError: imps/binary_search.rb not found'
+    puts
+    puts '  **** Error: imps/binary_search.rb not found' unless @no_file
+    @no_file = true
   end
 
   def assert_binary_search_value(arr, target, expected = target)
@@ -16,7 +18,7 @@ class TestBinarySearch < Minitest::Test
       assert_equal(@arr[binary_search(arr, target)], expected)
     end
   rescue NoMethodError
-    puts 'Skipping test, Binary Search not implemented...' unless @no_imp
+    puts '  ...Skipping test, Binary Search not implemented...' unless @no_imp
     @no_imp = true
   end
 

@@ -3,10 +3,12 @@ require('minitest/autorun')
 
 class TestDfs < Minitest::Test
   def setup
-    require_relative('../../imps/dfs')
     @graph_hash = TestHelpers.create_graph
+    require_relative('../../imps/dfs')
   rescue LoadError
-    puts 'LoadError: imps/dfs.rb not found'
+    puts
+    puts '  **** Error: imps/dfs.rb not found' unless @no_file
+    @no_file = true
   end
 
   def assert_value(graph, target, expected = target)
@@ -16,7 +18,7 @@ class TestDfs < Minitest::Test
       assert_equal(dfs(graph, target)&.value, expected)
     end
   rescue NoMethodError
-    puts 'Skipping test, DFS not implemented...' unless @no_imp
+    puts '  ...Skipping test, DFS not implemented...' unless @no_imp
     @no_imp = true
   end
 
