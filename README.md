@@ -13,6 +13,7 @@ a single method with the following signatures:
     - DFS: a method called `dfs` receiving a `lib/test_helpers/node` and a target value,
     returning the node containing the value equal to the target value or nil if not found
 - Example implementations are available in example_imps/
+- Write your implementations! `vim imps/`
 - Run `dsa.rb` to test your implementations!
 
 #### Full Usage:
