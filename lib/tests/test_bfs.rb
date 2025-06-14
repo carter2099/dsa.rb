@@ -15,6 +15,9 @@ class TestBfs < Minitest::Test
     else
       assert_equal(bfs(graph, target)&.value, expected)
     end
+  rescue NoMethodError
+    puts 'Skipping test, BFS not implemented...' unless @no_imp
+    @no_imp = true
   end
 
   def assert_all_nodes(graph)

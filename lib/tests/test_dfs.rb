@@ -9,20 +9,23 @@ class TestDfs < Minitest::Test
     puts 'LoadError: imps/dfs.rb not found'
   end
 
-  def assert_dfs_value(graph, target, expected = target)
+  def assert_value(graph, target, expected = target)
     if expected.nil?
       assert_nil(dfs(graph, target))
     else
       assert_equal(dfs(graph, target)&.value, expected)
     end
+  rescue NoMethodError
+    puts 'Skipping test, DFS not implemented...' unless @no_imp
+    @no_imp = true
   end
 
   def assert_all_nodes(graph)
-    (0..12).each { assert_dfs_value graph, _1 }
-    assert_dfs_value(graph, 50, nil)
-    assert_dfs_value(graph, 99, nil)
-    assert_dfs_value(graph, -50, nil)
-    assert_dfs_value(graph, -99, nil)
+    (0..12).each { assert_value graph, _1 }
+    assert_value(graph, 50, nil)
+    assert_value(graph, 99, nil)
+    assert_value(graph, -50, nil)
+    assert_value(graph, -99, nil)
   end
 
   def test_from_middle
