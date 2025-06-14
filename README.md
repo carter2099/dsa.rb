@@ -1,5 +1,5 @@
 # dsa.rb
-A test suite to practice implementations of core algorithms in ruby.
+A CLI test suite to practice implementations of core algorithms in ruby.
 
 ## Objective
 Cement ability to implement core algorithms through repetition.
