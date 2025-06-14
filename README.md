@@ -8,8 +8,8 @@ This test suite is not like LeetCode. In fact, it's more of a prerequisite to Le
 
 The test cases are not exhaustive in the spirit of checking for runtime performance, 
 scalability, etc. Implementations are generalized, so that through practice using this 
-tool, the user can avoid having to think about the algorithmic pattern, and focus on 
-the application to the problem at hand.
+tool, the user can avoid having to think about the algorithmic pattern, and instead 
+focus on its application to the problem at hand.
 
 ## Usage
 1. `chmod +x dsa.rb` to make dsa.rb executable
