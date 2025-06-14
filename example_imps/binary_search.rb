@@ -8,7 +8,7 @@ def search(arr, target, left, right)
   mid = left + (right - left) / 2
   return mid if target == arr[mid]
 
-  if target >= arr[mid]
+  if target > arr[mid]
     search(arr, target, mid + 1, right)
   else
     search(arr, target, left, mid - 1)

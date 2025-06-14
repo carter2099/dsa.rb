@@ -1,14 +1,10 @@
 require_relative 'node'
 module TestHelpers
-  def self.run_test
-    puts(yield ? '--pass' : '***FAIL***')
-  end
-
-  # returns a hash modeling the following graph:
+  # returns a hash containing the nodes of the following graph:
   #
   #         5  0  12
-  #       /  \/  /
-  #   8--7   1--10    6--11
+  #       /  \/  /  \
+  #   8--7   1--10   6--11
   #         /\       /
   #        9  2--3--4
   def self.create_graph
@@ -26,9 +22,9 @@ module TestHelpers
     graph[10].neighbors = [graph[1], graph[12]]
     graph[3].neighbors = [graph[2], graph[4]]
     graph[4].neighbors = [graph[3], graph[6]]
-    graph[6].neighbors = [graph[4], graph[11]]
+    graph[6].neighbors = [graph[4], graph[11], graph[12]]
     graph[11].neighbors = [graph[6]]
-    graph[12].neighbors = [graph[10]]
+    graph[12].neighbors = [graph[10], graph[6]]
     graph
   end
 
