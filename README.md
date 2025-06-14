@@ -28,7 +28,7 @@ a single method with the following signatures:
 7. Run `dsa.rb` to test your implementations!
 
 Tip - `Node` has two fields: `value` containing its value, and `neighbors` which is
-a list of `Node` containing the node's neighbors.
+an array of `Node` containing the node's neighbors.
 
 #### Full Usage:
 - `dsa.rb [run|init|reset|restore|clean|help]`
