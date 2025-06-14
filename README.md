@@ -37,3 +37,7 @@ their tests.
     - Where the implementations go. Empty starter files corresponding to lib/tests are dynamically created by `dsa.rb`
 - archive/
     - Where archived implementations go, saved in directories named the date of archival
+
+## Learning Ruby
+If you're interested learning more about Ruby programming, I highly recommend the 
+[pickaxe](https://pragprog.com/titles/ruby5/programming-ruby-3-3-5th-edition/).
