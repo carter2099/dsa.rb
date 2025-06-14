@@ -5,9 +5,9 @@ module Actions
     puts
     puts <<~TEXT.gsub(/^/, '  ')
       ** Usage **
-      - `chmod +x dsa.rb` to make dsa.rb executable
-      - `dsa.rb init` to create empty files in imps/
-      - By default, dsa.rb supports BFS, Binary Search, and DFS. Each file in imps/ should implement
+      1. `chmod +x dsa.rb` to make dsa.rb executable
+      2. `dsa.rb init` to create empty files in imps/
+      3. By default, dsa.rb supports BFS, Binary Search, and DFS. Each file in imps/ should implement
       a single method with the following signatures:
           - BFS: a method called `bfs` receiving a `lib/test_helpers/node` and target value,
           returning the node containing the value equal to the target value or nil if not found
@@ -15,8 +15,8 @@ module Actions
           returning the index of the array corresponding to the target value or nil if not found
           - DFS: a method called `dfs` receiving a `lib/test_helpers/node` and a target value,
           returning the node containing the value equal to the target value or nil if not found
-      - Example implementations are available in example_imps/
-      - Run `dsa.rb` to test your implementations!
+      4. Example implementations are available in example_imps/
+      5. Run `dsa.rb` to test your implementations!
 
       ** Full Usage **
       - `dsa.rb [run|init|reset|restore|clean|help]`
