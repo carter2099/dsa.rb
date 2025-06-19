@@ -5,7 +5,7 @@ def bfs(node, target)
   while (current = queue.shift)
     return current if current.value == target
 
-    current.neighbors.filter { !visited.include? _1 }.each { queue << _1 }
     visited << current
+    current.neighbors.filter { !visited.include? _1 }.each { queue << _1 }
   end
 end
