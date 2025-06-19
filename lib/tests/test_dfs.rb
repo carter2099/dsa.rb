@@ -17,7 +17,9 @@ class TestDfs < Minitest::Test
     else
       assert_equal(dfs(graph, target)&.value, expected)
     end
-  rescue NoMethodError
+  rescue NoMethodError => e
+    raise e unless e.message.match?(/undefined method 'dfs'/)
+
     puts '  ...Skipping test, DFS not implemented...' unless @no_imp
     @no_imp = true
   end

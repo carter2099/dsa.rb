@@ -17,7 +17,9 @@ class TestBinarySearch < Minitest::Test
     else
       assert_equal(@arr[binary_search(arr, target)], expected)
     end
-  rescue NoMethodError
+  rescue NoMethodError => e
+    raise e unless e.message.match?(/undefined method 'binary_search'/)
+
     puts '  ...Skipping test, Binary Search not implemented...' unless @no_imp
     @no_imp = true
   end

@@ -17,7 +17,9 @@ class TestBfs < Minitest::Test
     else
       assert_equal(bfs(graph, target)&.value, expected)
     end
-  rescue NoMethodError
+  rescue NoMethodError => e
+    raise e unless e.message.match?(/undefined method 'bfs'/)
+
     puts '  ...Skipping test, BFS not implemented...' unless @no_imp
     @no_imp = true
   end
