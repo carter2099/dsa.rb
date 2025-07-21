@@ -93,7 +93,7 @@ module Actions
   end
 
   private_class_method def self.safe_create_imp_files
-    yield_imp_filenames { |filename| File.open(filename, 'w') {} unless File.exist? filename }
+    yield_imp_filenames { |filename| File.open(filename, 'w') unless File.exist? filename }
   end
 
   # Reads the contents of the lib/tests directory and yields matching implementation
