@@ -1,5 +1,5 @@
 def binary_search(arr, target)
-  search arr, target, 0, arr.length - 1
+  search(arr, target, 0, arr.length - 1)
 end
 
 def search(arr, target, left, right)
@@ -9,8 +9,8 @@ def search(arr, target, left, right)
   return mid if arr[mid] == target
 
   if arr[mid] < target
-    search arr, target, mid + 1, right
+    search(arr, target, mid + 1, right)
   else
-    search arr, target, left, mid - 1
+    search(arr, target, left, mid - 1)
   end
 end
