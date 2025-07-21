@@ -6,6 +6,6 @@ def bfs(node, target)
     return current if current.value == target
 
     visited << current
-    current.neighbors.filter { !visited.include? _1 }.each { queue << _1 }
+    current.neighbors.each { queue << _1 unless visited.include? _1 }
   end
 end
