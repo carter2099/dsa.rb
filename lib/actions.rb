@@ -66,7 +66,8 @@ module Actions
     until %w[y n].include?(input = $stdin.gets.chomp)
       print 'Please enter y or n: '
     end
-    exit(0) if input == 'n'
+    return if input == 'n'
+
     del_imp_files
     puts 'imps/ cleared'
     return unless clear_archive
@@ -81,7 +82,7 @@ module Actions
     yield_imp_filenames do |filename|
       FileUtils.mv(filename, archive_dir) if File.exist?(filename)
     end
-    puts "Archived imps/ to #{archive_dir}"
+    puts "Archived imps/ to #{archive_dir}/"
   end
 
   private_class_method def self.del_archive_files
