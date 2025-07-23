@@ -51,7 +51,7 @@ module Actions
 
   def self.restore
     prompt_and_clear
-    most_recent_dir = "archive/#{Dir.new('archive').children.sort.reverse.first}"
+    most_recent_dir = "archive/#{Dir.new('archive').children.max}"
     Dir.new(most_recent_dir).children.each do |file|
       FileUtils.mv("#{most_recent_dir}/#{file}", "imps/#{file}")
     end

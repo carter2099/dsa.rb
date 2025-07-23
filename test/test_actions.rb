@@ -49,13 +49,7 @@ class TestActions < Minitest::Test
   end
 
   def test_del_archive_files
-    FileUtils.mkdir_p './archive/test-date'
-    FileUtils.mkdir_p './archive/test-date2'
-    TESTS.each do |test|
-      ["./archive/test-date/#{test}.rb", "./archive/test-date2/#{test}.rb"].each do |filename|
-        File.open(filename, 'w') unless File.exist? filename
-      end
-    end
+    %w[test-date test-date2].each { create_archive_files(datestring: _1) }
     Actions.send('del_archive_files')
     assert_equal([], Dir['./archive/*'])
 
@@ -66,6 +60,7 @@ class TestActions < Minitest::Test
 
   def test_archive
     Dir['archive/*'].each { FileUtils.rm_rf _1 }
+    Dir['imps/*'].each { FileUtils.rm_rf _1 }
     create_imp_files
     Actions.send('archive')
     archives = Dir.glob("archive/*/{#{TESTS.join(',')}}.rb")
@@ -106,6 +101,73 @@ class TestActions < Minitest::Test
     end
   end
 
+  def test_clean
+    called = false
+    Actions.stub(:prompt_and_clear, ->(_) { called = true }) do
+      Actions.clean
+      assert called
+    end
+  end
+
+  def test_restore
+    Dir['archive/*'].each { FileUtils.rm_rf _1 }
+    Dir['imps/*'].each { FileUtils.rm_rf _1 }
+    %w[20220101_01:00 20201212_12:00 20240529_11:59].each do |datestring|
+      create_archive_files(datestring: datestring)
+    end
+
+    current_dir = "archive/#{Time.new.strftime('%Y%m%d_%H:%M')}"
+    FileUtils.mkdir_p current_dir
+    File.open("#{current_dir}/foo.rb", 'w')
+
+    expected = ['imps/foo.rb']
+
+    called = false
+    Actions.stub(:prompt_and_clear, -> { called = true }) do
+      Actions.restore
+      assert_equal(expected, Dir['imps/*'])
+    end
+  end
+
+  def test_reset
+    archive_called = false
+    safe_create_called = false
+    Actions.stub(:archive, -> { archive_called = true }) do
+      Actions.stub(:safe_create_imp_files, -> { safe_create_called = true }) do
+        Actions.reset
+        assert archive_called
+        assert safe_create_called
+      end
+    end
+  end
+
+  def test_init
+    FileUtils.rm_rf 'imps'
+
+    called = false
+    Actions.stub(:safe_create_imp_files, -> { called = true }) do
+      Actions.init
+      assert File.directory?('imps')
+      assert called
+    end
+
+    # dir exists
+    called = false
+    Actions.stub(:safe_create_imp_files, -> { called = true }) do
+      Actions.init
+      assert File.directory?('imps')
+      assert called
+    end
+  end
+
+  def test_run_tests
+    called_with = []
+    Actions.stub(:require, ->(arg) { called_with << arg }) do
+      Actions.run_tests
+    end
+    assert_equal(Dir['./lib/tests/*.rb'], called_with)
+  end
+
   def create_imp_files
     TESTS.each do |test|
       filename = "imps/#{test}.rb"
@@ -113,10 +175,10 @@ class TestActions < Minitest::Test
     end
   end
 
-  def create_archive_files
-    FileUtils.mkdir_p 'archive/some-date'
+  def create_archive_files(datestring: 'some-date')
+    FileUtils.mkdir_p "archive/#{datestring}"
     TESTS.each do |test|
-      filename = "archive/some-date/#{test}.rb"
+      filename = "archive/#{datestring}/#{test}.rb"
       File.open(filename, 'w') unless File.exist? filename
     end
   end
