@@ -12,7 +12,7 @@ class TestTemplate < Minitest::Test
   end
 
   def assert_template_value
-    # assert things... see examples in lib/tests/
+    # assert things in a standard way... see examples in lib/tests/
   rescue NoMethodError => e
     raise e unless e.message.match?(/undefined method 'template'/)
 
@@ -21,5 +21,7 @@ class TestTemplate < Minitest::Test
   end
 
   def test_something
+    puts 'Template do something'
+    assert false
   end
 end
