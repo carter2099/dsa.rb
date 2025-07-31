@@ -126,6 +126,7 @@ class TestActions < Minitest::Test
     Actions.stub(:prompt_and_clear, -> { called = true }) do
       Actions.restore
       assert_equal(expected, Dir['imps/*'])
+      assert called
     end
   end
 
