@@ -40,9 +40,12 @@ an array of `Node` containing the node's neighbors.
     - `help` print this message
 
 ## Extension
-Add to lib/tests using `test_template.rb` as a reference. `dsa.rb` will dynamically 
-read from the lib/tests directory to create the empty implementation files and run
-their tests.
+Add new algorithms to lib/tests using `test_template.rb` as a reference. `dsa.rb` 
+will dynamically read from the lib/tests directory to create the empty implementation 
+files and run their tests.
+
+If you wish to contribute to dsa.rb itself: make your changes, update/add tests, ensure
+they pass with `rake`, and open a pr.
 
 ## Structure
 - lib/tests
@@ -53,6 +56,8 @@ their tests.
     - Where the implementations go. Empty starter files corresponding to lib/tests are dynamically created by `dsa.rb`
 - archive/
     - Where archived implementations go, saved in directories named the date of archival
+- test/
+    - Tests for dsa.rb itself. Ran with `rake`
 
 ## Learning Ruby
 If you're interested learning more about Ruby programming, I highly recommend the 
