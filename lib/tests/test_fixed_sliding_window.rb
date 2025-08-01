@@ -3,7 +3,7 @@ require('minitest/autorun')
 
 class TestFixedSlidingWindow < Minitest::Test
   def setup
-    @arr = TestHelpers.create_arr.shuffle
+    @arr = TestHelpers.create_arr
     require_relative('../../imps/fixed_sliding_window')
   rescue LoadError
     puts
