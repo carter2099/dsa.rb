@@ -11,7 +11,7 @@ scalability, etc. Implementations are generalized, so that through practice usin
 tool, the user can avoid having to think about the algorithmic pattern, and instead 
 focus on its application to the problem at hand.
 
-## Usage
+## Getting Started
 1. `git clone` and `cd` into this repo
 2. You may need to `chmod +x dsa.rb` to make dsa.rb executable
 3. `dsa.rb init` to create empty files in imps/
@@ -35,7 +35,7 @@ a single method with the following signatures:
 Tip - `Node` has two fields: `value` containing its value, and `neighbors` which is
 an array of `Node` containing the node's neighbors.
 
-#### Full Usage:
+## Usage:
 - `dsa.rb [run|init|reset|restore|clean|help]`
     - `run` or no args runs the tests
     - `init` creates empty implementations in the imps/ directory. This will not override existing files.
