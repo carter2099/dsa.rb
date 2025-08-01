@@ -21,7 +21,7 @@ class TestTemplate < Minitest::Test
   end
 
   def test_something
-    puts 'Template do something'
+    puts "\nTemplate do something"
     assert false
   end
 end

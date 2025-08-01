@@ -21,27 +21,27 @@ class TestFixedSlidingWindow < Minitest::Test
   end
 
   def test_window_size_one
-    puts "Fixed Sliding Window size one"
+    puts "\nFixed Sliding Window size one"
     assert_fixed_sliding_window_value(@arr, 1, 99)
   end
 
   def test_window_size_two
-    puts "Fixed Sliding Window size two"
+    puts "\nFixed Sliding Window size two"
     assert_fixed_sliding_window_value(@arr, 2, 114)
   end
 
   def test_window_size_three
-    puts "Fixed Sliding Window size three"
+    puts "\nFixed Sliding Window size three"
     assert_fixed_sliding_window_value(@arr, 3, 127)
   end
 
   def test_window_size_seven
-    puts "Fixed Sliding Window size seven"
+    puts "\nFixed Sliding Window size seven"
     assert_fixed_sliding_window_value(@arr, 7, 153)
   end
 
   def test_window_size_thirteen
-    puts "Fixed Sliding Window size thirteen"
+    puts "\nFixed Sliding Window size thirteen"
     assert_fixed_sliding_window_value(@arr, 13, 137)
   end
 end
