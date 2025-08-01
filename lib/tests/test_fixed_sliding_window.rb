@@ -12,7 +12,7 @@ class TestFixedSlidingWindow < Minitest::Test
   end
 
   def assert_fixed_sliding_window_value(arr, window_size, expected)
-    assert_equal(fixed_sliding_window(arr, window_size), expected)
+    assert_equal(expected, fixed_sliding_window(arr, window_size))
   rescue NoMethodError => e
     raise e unless e.message.match?(/undefined method 'fixed_sliding_window'/)
 

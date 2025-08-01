@@ -15,7 +15,7 @@ class TestBfs < Minitest::Test
     if expected.nil?
       assert_nil(bfs(graph, target))
     else
-      assert_equal(bfs(graph, target)&.value, expected)
+      assert_equal(expected, bfs(graph, target)&.value)
     end
   rescue NoMethodError => e
     raise e unless e.message.match?(/undefined method 'bfs'/)

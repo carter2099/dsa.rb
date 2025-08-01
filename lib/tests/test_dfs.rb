@@ -15,7 +15,7 @@ class TestDfs < Minitest::Test
     if expected.nil?
       assert_nil(dfs(graph, target))
     else
-      assert_equal(dfs(graph, target)&.value, expected)
+      assert_equal(expected, dfs(graph, target)&.value)
     end
   rescue NoMethodError => e
     raise e unless e.message.match?(/undefined method 'dfs'/)

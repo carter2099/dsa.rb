@@ -15,7 +15,7 @@ class TestBinarySearch < Minitest::Test
     if expected.nil?
       assert_nil(binary_search(arr, target))
     else
-      assert_equal(@arr[binary_search(arr, target)], expected)
+      assert_equal(expected, @arr[binary_search(arr, target)])
     end
   rescue NoMethodError => e
     raise e unless e.message.match?(/undefined method 'binary_search'/)
