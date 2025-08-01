@@ -31,4 +31,8 @@ module TestHelpers
   def self.create_arr
     [-12, -5, -2, 0, 1, 2, 3, 7, 7, 9, 13, 15, 99]
   end
+
+  def self.create_arr_pos
+    [2, 4, 6, 1, 3, 5, 2, 3, 4]
+  end
 end

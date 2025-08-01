@@ -11,7 +11,8 @@ class TestTemplate < Minitest::Test
     @no_file = true
   end
 
-  def assert_template_value
+  def assert_template_value(input, expected)
+    assert_equal(expected, template(input))
     # assert things in a standard way... see examples in lib/tests/
   rescue NoMethodError => e
     raise e unless e.message.match?(/undefined method 'template'/)
@@ -22,6 +23,6 @@ class TestTemplate < Minitest::Test
 
   def test_something
     puts "\nTemplate do something"
-    assert false
+    assert_template_value(nil, nil)
   end
 end
