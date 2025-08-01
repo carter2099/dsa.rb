@@ -44,6 +44,19 @@ an array of `Node` containing the node's neighbors.
     - `clean` deletes the contents of the imps/ and archive/ directories
     - `help` print this message
 
+The usage loop looks like this:
+
+_write imps_
+
+`dsa.rb`
+
+`dsa.rb reset`
+
+_repeat_
+
+Start your day with `dsa.rb` if you're prepping for interviews. Try to get to the point
+where you can implement all five default algorithms in less than 10 minutes!
+
 ## Extension
 Add new algorithms to lib/tests using `test_template.rb` as a reference. `dsa.rb` 
 will dynamically read from the lib/tests directory to create the empty implementation 
