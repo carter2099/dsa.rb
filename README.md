@@ -15,8 +15,8 @@ focus on its application to the problem at hand.
 1. `git clone` and `cd` into this repo
 2. You may need to `chmod +x dsa.rb` to make dsa.rb executable
 3. `dsa.rb init` to create empty files in imps/
-4. By default, dsa.rb supports BFS, Binary Search, and DFS. Each file in imps/ should implement
-a single method with the following signatures:
+4. By default, dsa.rb supports BFS, Binary Search, DFS, and two Sliding Window algoorithms. 
+Each file in imps/ should implement a single method with the following signatures:
     - *BFS*: a method named `bfs` receiving a `lib/test_helpers/node` and target value,
     returning the node containing the value equal to the target value or nil if not found
     - *Binary Search*: a method named `binary_search` receiving an array and a target value,
