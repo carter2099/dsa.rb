@@ -26,6 +26,8 @@ a single method with the following signatures:
     - Fixed Sliding Window: a method named `fixed_sliding_window` receiving an array and
     a window size, returning the maximum sum of any sub array with a length matching the
     window size
+    - Variable Sliding Window: a method named `variable_sliding_window` receiving an array
+    and a maximum sum, returning the greatest length of any subarray matching the maximum sum
 5. Example implementations are available in example_imps/
 6. Write your implementations! `vim imps/`
 7. Run `dsa.rb` to test your implementations!
