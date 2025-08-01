@@ -17,12 +17,15 @@ focus on its application to the problem at hand.
 3. `dsa.rb init` to create empty files in imps/
 4. By default, dsa.rb supports BFS, Binary Search, and DFS. Each file in imps/ should implement
 a single method with the following signatures:
-    - BFS: a method called `bfs` receiving a `lib/test_helpers/node` and target value,
+    - BFS: a method named `bfs` receiving a `lib/test_helpers/node` and target value,
     returning the node containing the value equal to the target value or nil if not found
-    - Binary Search: a method called `binary_search` receiving an array and a target value,
+    - Binary Search: a method named `binary_search` receiving an array and a target value,
     returning the index of the array corresponding to the target value or nil if not found
-    - DFS: a method called `dfs` receiving a `lib/test_helpers/node` and a target value,
+    - DFS: a method named `dfs` receiving a `lib/test_helpers/node` and a target value,
     returning the node containing the value equal to the target value or nil if not found
+    - Fixed Sliding Window: a method named `fixed_sliding_window` receiving an array and
+    a window size, returning the maximum sum of any sub array with a length matching the
+    window size
 5. Example implementations are available in example_imps/
 6. Write your implementations! `vim imps/`
 7. Run `dsa.rb` to test your implementations!
