@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require 'actions'
 
 class TestActions < Minitest::Test
-  TESTS = %w[bfs binary_search dfs]
+  TESTS = %w[bfs binary_search dfs fixed_sliding_window].freeze
 
   def test_list_files
     expected = TESTS.collect do |test|
